@@ -5,13 +5,13 @@ function Stopwatch() {
 
   // Bool that controls whether the stopwatch is running or not
   let isRunning = false;
-  let start = null;
+  let startTime = null;
 
   this.start = function() {
     if (isRunning) {
       throw new Error("Stopwatch is already started.");
     } else {
-      start = new Date();
+      startTime = new Date();
       isRunning = true;
     }
   };
@@ -20,17 +20,17 @@ function Stopwatch() {
     if (!isRunning) {
       throw new Error("Stopwatch is not running.");
     } else {
-      let stop = new Date();
-      this.duration += (stop - start) / 1000;
+      let stopTime = new Date();
+      duration += (stopTime - startTime) / 1000;
       isRunning = false;
     }
   };
 
   this.reset = function() {
-    if (this.duration == 0 || isRunning) {
+    if (duration == 0 || isRunning) {
       throw new Error("Stopwatch cannot currently be reset.");
     } else {
-      this.duration = 0;
+      duration = 0;
     }
   };
 
